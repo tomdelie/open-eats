@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/tailwind.min.css" />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+<%- include('templates/header') %>
 
-    <script src="/javascripts/main.min.js"></script>
-  </body>
-</html>
+<div class="custom-container">
+    <p class="text-xl mt-6">Welcome to <%= title %></p>
+</div>
+
+<%- include('templates/footer') %>

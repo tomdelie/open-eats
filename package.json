@@ -9,9 +9,9 @@
   ],
   "scripts": {
     "start": "nodemon app.js",
-    "start:prod": "node app.js",
+    "start:prod": "NODE_ENV=production node app.js",
     "webpack:dev": "webpack --mode=development",
-    "webpack:prod": "webpack --mode=production"
+    "webpack:prod": "NODE_ENV=production webpack --mode=production"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
