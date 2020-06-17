@@ -2,8 +2,16 @@
   "name": "open-eat",
   "version": "0.0.0",
   "private": true,
+  "browserslist": [
+    "last 2 versions",
+    "safari >= 7",
+    "ie >= 7"
+  ],
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon app.js",
+    "start:prod": "node app.js",
+    "webpack:dev": "webpack --mode=development",
+    "webpack:prod": "webpack --mode=production"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -11,6 +19,25 @@
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "tailwindcss": "^1.4.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "autoprefixer": "^9.8.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.6.0",
+    "file-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "nodemon": "^2.0.4",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-cli": "^7.1.1",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^1.2.1",
+    "terser-webpack-plugin": "^3.0.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   }
 }
