@@ -2,7 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-.custom-container {
-    padding-left: 5rem;
-    padding-right: 5rem;
+.banner-green {
+    background-color: #66D19E;
+}
+.banner-height {
+    height: 415px;
+}
+
+.centered {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.recruit-height {
+    height: 315px;
+}
+
+.text-green-uber {
+    color: #21A453;
 }
