@@ -1,4 +1,4 @@
-# Open Eat
+# Open Eats
 
 ### Installation
 
