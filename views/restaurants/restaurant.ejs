@@ -1,0 +1,27 @@
+<%- include('../templates/header') %>
+
+<%- include('_banner', {
+    id: id,
+    name: name,
+    tags: tags,
+    address: address,
+    bannerImage: bannerImage
+  }) %>
+
+<div class="custom-container lg:pl-20 lg:pr-20 pl-4 pr-4 mt-10">
+    <section>
+        <h2 class="text-2xl">Produits</h2>
+        <div>
+            menu best of
+        </div>
+    </section>
+    <hr class="border-gray-400 mt-10 mb-10">
+    <section>
+        <h2 class="text-2xl">Commentaires</h2>
+        <div>
+            trop bon
+        </div>
+    </section>
+</div>
+
+<%- include('../templates/footer') %>

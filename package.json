@@ -8,6 +8,7 @@
     "ie >= 7"
   ],
   "scripts": {
+    "cy:open": "cypress open",
     "test": "nyc mocha 'tests/*.spec.js'",
     "start": "nodemon app.js",
     "start:prod": "NODE_ENV=production node app.js",
@@ -32,6 +33,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "css-loader": "^3.6.0",
+    "cypress": "^4.8.0",
     "file-loader": "^6.0.0",
     "mini-css-extract-plugin": "^0.9.0",
     "mocha": "^8.0.1",
