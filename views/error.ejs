@@ -1,4 +1,6 @@
-<%- include('templates/header') %>
+<%- include('templates/header', {
+    hideNavbar: false
+}) %>
 
 <h1><%= message %></h1>
 <h2><%= error.status %></h2>

@@ -10,5 +10,7 @@
     <link rel="icon" href="/images/favicon.ico">
 </head>
 
-<body class="m-0">
-    <%- include navbar.ejs %>
+<body class="m-0 h-full w-full">
+    <% if (hideNavbar === false) { %>
+        <%- include navbar.ejs %>
+    <% } %>

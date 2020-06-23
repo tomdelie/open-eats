@@ -1,4 +1,6 @@
-<%- include('templates/header') %>
+<%- include('templates/header', {
+    hideNavbar: false
+}) %>
 
 <div class="w-full banner-height banner-green relative">
     <img src="/images/banner-left.svg" class="lg:block hidden absolute banner-height left-0">
@@ -29,7 +31,7 @@
             <div class="lg:w-1/3 w-full lg:mr-6 mb-4">
                 <figure class="h-56 relative">
                     <div class="w-full h-full left-0 top-0 absolute">
-                        <a href="/restaurants/1"><img class="w-full h-full object-cover" src="/images/mcdo.jpeg"></a>
+                        <a href="/restaurants/1" class="hover:mt-4"><img class="w-full h-full object-cover  origin-center" src="/images/mcdo.jpeg"></a>
                     </div>
                 </figure>
                 <div class="flex justify-between items-center pt-3 pb-3">
@@ -104,7 +106,10 @@
             </figure>
             <div class="flex flex-col pt-3 pb-3">
                 <h2 class="text-2xl">Nourrir vos employés</h2>
-                <a href="#!" class="text-green-uber text-sm font-bold mt-1">Créer un compte entreprise</a>
+                <div class="mt-1">
+                    <a href="/inscription" class="text-green-uber text-sm font-bold">Créer un compte
+                        entreprise</a>
+                </div>
             </div>
         </div>
         <div class="lg:w-1/3 w-full lg:mr-6 mb-4">
@@ -115,7 +120,9 @@
             </figure>
             <div class="flex flex-col pt-3 pb-3">
                 <h2 class="text-2xl">Votre restaurant, livré</h2>
-                <a href="#!" class="text-green-uber text-sm font-bold mt-1">Ajouter votre restaurant</a>
+                <div class="mt-1">
+                    <a href="#!" class="text-green-uber text-sm font-bold">Ajouter votre restaurant</a>
+                </div>
             </div>
         </div>
         <div class="lg:w-1/3 w-full mb-4">
@@ -126,7 +133,9 @@
             </figure>
             <div class="flex flex-col pt-3 pb-3">
                 <h2 class="text-2xl">Livrer les repas</h2>
-                <a href="#!" class="text-green-uber text-sm font-bold mt-1">S'inscrire pour livrer</a>
+                <div class="mt-1">
+                    <a href="/inscription" class="text-green-uber text-sm font-bold">S'inscrire pour livrer</a>
+                </div>
             </div>
         </div>
     </section>
