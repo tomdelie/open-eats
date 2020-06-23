@@ -5,16 +5,30 @@
     </a>
   </div>
   <div class="flex">
-    <div class="text-sm mr-8">
-      <a href="/connexion">
-        Se connecter
-      </a>
-    </div>
-    <div class="text-sm">
-      <a href="/inscription">
-        S'inscrire
-      </a>
-    </div>
+    <% if (session) { %>
+      <div class="text-sm mr-8">
+          
+      </div>
+      <div class="text-sm mr-8">
+        Connecté en tant que <span class="text-green-uber"><%= session.email %></span>
+      </div>
+      <div class="text-sm">
+        <a href="/deconnexion">
+          Se déconnecter
+        </a>
+      </div>
+    <% } else { %>
+      <div class="text-sm mr-8">
+        <a href="/connexion">
+          Se connecter
+        </a>
+      </div>
+      <div class="text-sm">
+        <a href="/inscription">
+          S'inscrire
+        </a>
+      </div>
+    <% } %>
   </div>
 
 </nav>

@@ -5,8 +5,17 @@
 .banner-green {
     background-color: #66D19E;
 }
+
+.bg-green-uber {
+    background-color: #3e9920;
+}
+
 .banner-height {
     height: 415px;
+}
+
+.w-security {
+    width: 550px;
 }
 
 .restaurant-height {

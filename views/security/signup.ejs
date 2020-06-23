@@ -2,30 +2,33 @@
     hideNavbar: true
 }) %>
 
-<div class="flex justify-center mt-20">
-    <div class="flex flex-col">
+<div class="flex justify-center mt-20 mb-20 pl-4 pr-4">
+    <div class="flex flex-col w-security">
         <a href="/" class="self-center"><img src="/images/open-eats.svg" height="32" alt="logo"></a>
         <h1 class="text-2xl mt-10 mb-4">C'est parti</h1>
-        <form>
+
+        <% if (typeof (message) !== 'undefined') { %>
+            <div class="mb-4 bg-red-200 border-l-4 border-red-500 text-red-700 p-4"><%= message %></div>
+        <% } %>
+        
+        <form action="/inscription" method="POST">
             <div class="flex flex-col">
                 <label for="email">Adresse email</label>
-                <input type="email" id="email" class="w-full items-center border border-1 border-gray-400 p-3">
-            </div>
-            <div class="flex flex-col mt-4">
-                <label for="username">Nom d'utilisateur</label>
-                <input type="text" id="username" class="w-full items-center border border-1 border-gray-400 p-3">
+                <input type="email" name="email" id="email" class="w-full items-center border border-1 border-gray-400 p-3">
             </div>
             <div class="flex flex-col mt-4">
                 <label for="password">Mot de passe</label>
-                <input type="password" id="password" class="w-full items-center border border-1 border-gray-400 p-3">
+                <input type="password" name="password" id="password" class="w-full items-center border border-1 border-gray-400 p-3">
             </div>
             <div class="flex flex-col mt-4">
                 <label for="confirm-password">Confirmer le mot de passe</label>
-                <input type="password" id="confirm-password" class="w-full items-center border border-1 border-gray-400 p-3">
+                <input type="password" name="confirmPassword" id="confirm-password" class="w-full items-center border border-1 border-gray-400 p-3">
             </div>
+
+            <input type="submit" id="submit-sign-up" value="S'inscrire" class="mt-4 w-full p-3 bg-green-600 cursor-pointer hover:bg-green-700 text-white font-bold">
         </form>
-        <div class="mt-4">
-            Vous découvrez êtes déjà inscrit ? 
+        <div class="mt-8 text-center">
+            Vous êtes déjà inscrit ? 
             <a href="/connexion" class="text-green-uber">Connexion</a></div>
     </div>
     
