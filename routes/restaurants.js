@@ -1,5 +1,5 @@
 const express = require('express');
-const { firebaseApp: firebase } = require('../src/javascripts/initFirebase.js');
+const { firebaseApp: firebase } = require('../src/javascripts/firebaseInit.js');
 const router = express.Router();
 
 router.get('/:id', (req, res) => {
