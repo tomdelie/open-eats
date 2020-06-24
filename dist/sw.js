@@ -8,7 +8,8 @@ self.addEventListener('install', function(event) {
       .then(function(cache) {
         return cache.addAll([
             '/',
-            '/stylesheets/tailwind.min.css'
+            '/stylesheets/tailwind.min.css',
+            '/images/'
         ]);
       })
   );

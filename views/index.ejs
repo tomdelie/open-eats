@@ -4,11 +4,11 @@
 }) %>
 
 <% if (typeof (message) !== 'undefined') { %>
-    <div class="pl-4 text-center text-lg
+<div class="pl-4 text-center text-lg
     <% if(type === 'error') { %> bg-red-200 text-red-700 <% } %>
     <% if(type === 'success') { %> bg-green-200 text-green-700 <% } %>
     "><%= message %></div>
-  <% } %>
+<% } %>
 
 <div class="w-full banner-height banner-green relative">
     <img src="/images/banner-left.svg" alt="meal-one" class="lg:block sm:block hidden absolute banner-height left-0">
@@ -153,8 +153,6 @@
             </div>
         </div>
     </section>
-</div>
-
 </div>
 
 <%- include('templates/footer') %>
