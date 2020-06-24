@@ -2,6 +2,7 @@ const firebase = require('firebase/app');
 require('firebase/analytics');
 require('firebase/auth');
 require('firebase/firestore');
+require('firebase/storage');
 
 const firebaseConfig = {
   apiKey: "AIzaSyCzKpKxSXyRuFRbRP90p2L2vs4NWEN7n8w",
@@ -14,4 +15,7 @@ const firebaseConfig = {
   measurementId: "G-KC5R1VKM38"
 };
 
-module.exports = { firebaseApp: firebase.initializeApp(firebaseConfig) };
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const storage = firebase.storage();
+
+module.exports = { storageRef: storage.ref(), firebaseApp: firebaseApp };

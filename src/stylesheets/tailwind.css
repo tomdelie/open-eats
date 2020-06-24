@@ -31,3 +31,15 @@
 .recruit-height {
     height: 315px;
 }
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.h-full-custom {
+    min-height: calc(100vh - 14rem);
+}
+
+.h-full-custom-parameters {
+    min-height: calc(100vh - 16.5rem);
+}

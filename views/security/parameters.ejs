@@ -1,0 +1,40 @@
+<%- include('../templates/header', {
+    hideNavbar: false
+}) %>
+
+<div class="flex justify-center mt-10 mb-20 pl-4 pr-4 h-full-custom-parameters">
+    <div class="flex flex-col w-security">
+        <h1 class="text-2xl mt-4 mb-4">Paramètres</h1>
+
+        <% if (typeof (message) !== 'undefined') { %>
+            <div class="mb-4 p-4
+            <% if(type === 'error') { %> bg-red-200 border-l-4 border-red-500 text-red-700 <% } %>
+            <% if(type === 'success') { %> bg-green-200 border-l-4 border-green-500 text-green-700 <% } %>
+            "><%= message %></div>
+        <% } %>
+        
+        <form action="/parametres" method="POST" enctype="multipart/form-data">
+            <div class="flex flex-col">
+                <label for="avatar">Avatar</label>
+                <div>
+                    <% if (session.photoURL) { %>
+                        <img src="<%= session.photoURL %>" alt="avatar" class="border border-1 border-gray-400">
+                    <% } else { %>
+                        <img src="/images/avatar-guest@2x.png" alt="avatar" class="border border-1 border-gray-400">
+                    <% } %>
+                    <div class="mt-1 flex flex-col">
+                        <small class="text-xs">(format : jpeg, jpg, png)</small>
+                        <input type="file" name="avatar" id="avatar" accept=".jpg, .jpeg, .png" class="mt-1">
+                    </div>
+                </div>
+            </div>
+            <input type="submit" id="submit-sign-up" value="Mettre à jour"  class="mt-4 w-full p-3 bg-green-600 cursor-pointer hover:bg-green-700 text-white font-bold">
+        </form>
+
+        <a href="/parametres/supprimer" class="mt-4 text-red-700 cursor-pointer bg-white font-bold">Supprimer mon compte</a>
+    </div>
+    
+</div>
+
+<%- include('./_footer') %>
+

@@ -5,7 +5,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  res.render('index', { title: 'Express', session: firebase.auth().currentUser });
+  res.render('index', { title: 'Express', session: firebase.auth().currentUser, type: 'success', message: req.query.supprimer });
 });
 
 module.exports = router;
