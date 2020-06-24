@@ -12,10 +12,9 @@ self.addEventListener('install', function(event) {
             '/inscription',
             '/parametres',
             '/restaurants/1',
-            '/restaurant/2',
-            '/restaurant/3',
+            '/restaurants/2',
+            '/restaurants/3',
             '/stylesheets/tailwind.min.css',
-            '/images/'
         ]);
       })
   );
@@ -39,6 +38,11 @@ self.addEventListener('fetch', function(event) {
               caches.open(cacheVersion)
                 .then(function(cache) {
                   cache.put(event.request, responseClone);
+                  cache.matchAll('/images/').then(function(response) {
+                    response.forEach(function(element, index, array) {
+                      cache.delete(element);
+                    });
+                  });
                 });
 
                 return response;
