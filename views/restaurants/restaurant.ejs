@@ -9,8 +9,8 @@
 <div class="custom-container lg:pl-20 lg:pr-20 pl-4 pr-4 mt-10">
     <section>
         <h2 class="text-2xl mb-4">Produits</h2>
-        <div class="flex items-start w-1/3 border border-gray-400 hover:border-black cursor-pointer">
-            <div class="flex flex-col p-4">
+        <div class="flex items-start w-full justify-between xl:w-1/3 border border-gray-400 hover:border-black cursor-pointer">
+            <div class="flex flex-col p-3">
                 <span class="pb-1 text-lg"><%= restaurant.data().products.product.title %></span>
                 <span class="text-gray-700 text-base pb-1"><%= restaurant.data().products.product.description %></span>
                 <span class="text-gray-700 text-base font-bold"><%= restaurant.data().products.product.price %>€</span>
@@ -19,12 +19,9 @@
         </div>
     </section>
     <hr class="border-gray-400 mt-10 mb-10">
-    <section>
-        <h2 class="text-2xl">Commentaires</h2>
-        <div>
-            trop bon
-        </div>
-    </section>
+    <%- include('_ratings', { restaurant: restaurant }) %>
+    <hr class="border-gray-400 mt-10 mb-10">
+    <%- include('_comments', { id: restaurant.id }) %>
 </div>
 
 <%- include('../templates/footer') %>
