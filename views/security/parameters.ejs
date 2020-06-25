@@ -18,9 +18,9 @@
                 <label for="avatar">Avatar</label>
                 <div>
                     <% if (session.photoURL) { %>
-                        <img src="<%= session.photoURL %>" alt="avatar" class="border border-1 border-gray-400">
+                        <img src="<%= session.photoURL %>" alt="avatar" height="250" width="250" class="border border-1 border-gray-400">
                     <% } else { %>
-                        <img src="/images/avatar-guest@2x.png" alt="avatar" class="border border-1 border-gray-400">
+                        <img src="/images/avatar-guest@2x.png" alt="avatar" height="250" width="250" class="border border-1 border-gray-400">
                     <% } %>
                     <div class="mt-1 flex flex-col">
                         <small class="text-xs">(format : jpeg, jpg, png)</small>

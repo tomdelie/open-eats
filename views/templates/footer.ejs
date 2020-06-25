@@ -33,11 +33,33 @@
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('./sw.js').then((registration) => {
+                
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                /*
+                Notification.requestPermission(status => {
+                    console.log('Notification permission status: ', status)
+                });
+
+                displayNotification();
+                */
             }, (err) => {
                 console.log('ServiceWorker registration failed: ', err);
             });
         });
+    }
+
+    function displayNotification() {
+        if (Notification.permission === 'granted') {
+            navigator.serviceWorker.getRegistration().then(reg => {              
+                let options = {
+                    body: 'C\'est très bon, oui.',
+                    icon: 'images/mcdo.png',
+                    vibrate: [100, 50, 100],
+                    data: {primaryKey: 1}
+                }
+                reg.showNotification('Viens manger chez nous stp', options)
+            });
+        }
     }
 </script>
 </body>
