@@ -1,14 +1,12 @@
 const express = require('express');
-const { firebaseApp: firebase } = require('../src/javascripts/firebaseInit.js');
+const { firebaseApp: firebase, db } = require('../src/javascripts/firebaseInit.js');
 const router = express.Router();
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
+  const restaurant = await db.collection('restaurants').doc(req.params.id).get();
+
   res.render('restaurants/restaurant', {
-    id: req.params.id,
-    name: "McDonald's® (Paris Louvre Rivoli)",
-    tags: 'American • Burgers • Fast Food',
-    address: '184 Rue De Rivoli, PARIS, - 75001',
-    bannerImage: '/images/mcdo-maxres.jpeg',
+    restaurant: restaurant,
     session: firebase.auth().currentUser
   });
 });

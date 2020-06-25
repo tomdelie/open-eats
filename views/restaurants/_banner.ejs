@@ -1,14 +1,13 @@
 <div class="w-full restaurant-height relative">
     <div class="w-full h-full left-0 top-0 absolute">
-        <img class="w-full h-full object-cover" src="<%= bannerImage %>">
+        <img class="w-full h-full object-cover" src="<%= restaurant.data().bannerImage %>">
     </div>
     <div class="flex items-center w-full h-full">
-        <div class="bg-white black z-10">
-            <div class="p-6 pr-10 pl-20 flex flex-col">
-                <small class="text-xs">#<%= id %></small>
-                <h2 class="text-3xl font-bold"><%= name %></h2>
-                <span><%= tags %></span>
-                <span><%= address %></span>
+        <div class="bg-white w-full sm:w-auto black z-10 bg-opacity-75 sm:bg-opacity-100">
+            <div class="p-6 w-full lg:w-auto lg:pr-10 lg:pl-20 flex flex-col text-center sm:text-left">
+                <h2 class="text-3xl font-bold"><%= restaurant.data().name %></h2>
+                <span><%= restaurant.data().tags %></span>
+                <span><%= restaurant.data().address %></span>
             </div>
         </div>
     </div>

@@ -11,8 +11,8 @@
 <% } %>
 
 <div class="w-full banner-height banner-green relative">
-    <img src="/images/banner-left.svg" alt="meal-one" class="lg:block sm:block hidden absolute banner-height left-0">
-    <img src="/images/banner-right.svg" alt="meal-two" class="lg:block hidden absolute banner-height right-0">
+    <img src="/images/banner-left.svg" alt="meal-one" class="sm:block hidden absolute banner-height left-0">
+    <img src="/images/banner-right.svg" alt="meal-two" class="absolute banner-height right-0">
     <div class="absolute centered w-full lg:w-auto lg:pl-0 lg:pr-0 pl-4 pr-4">
         <h2 class="text-3xl lg:text-4xl xl:text-4xl mb-10 text-center">
             Your favorite food, delivered with Open Eats
@@ -38,75 +38,31 @@
     <section>
         <h2 class="text-2xl mb-6">Livraison à Paris</h2>
         <div class="flex lg:flex-row flex-col">
-            <div class="lg:w-1/3 w-full lg:mr-6 mb-4">
-                <figure class="h-56 relative">
-                    <div class="w-full h-full left-0 top-0 absolute">
-                        <a href="/restaurants/1"><img alt="restaurant"
-                                class="w-full h-full object-cover border origin-center" src="/images/mcdo.jpeg"></a>
-                    </div>
-                </figure>
-                <div class="flex justify-between items-center pt-3 pb-3">
-                    <div class="flex flex-col">
-                        <a href="/restaurants/1" class="text-xl">Mc Donald's (Paris)</a>
-                        <div class="flex items-center text-sm">
-                            <div>2,49€ la livraison</div>
-                            <div class="ml-1 mr-1">•</div>
-                            <div>15-25 minutes</div>
+            <% restaurants.forEach(restaurant => { %>
+                <div class="lg:w-1/3 w-full lg:mr-6 mb-4">
+                    <figure class="h-56 relative">
+                        <div class="w-full h-full left-0 top-0 absolute">
+                            <a href="/restaurants/<%=  restaurant.id %>"><img alt="<%=  restaurant.data().name %>"
+                                    class="w-full h-full object-cover border origin-center" src="<%=  restaurant.data().bannerImage %>"></a>
                         </div>
-                    </div>
-                    <div class="rounded-full p-2 bg-gray-400">4.2</div>
-                </div>
-                <hr class="border-gray-400 mt-2 mb-2">
-                <div class="text-xs text-gray-700">
-                    American • Burgers • Fast Food
-                </div>
-            </div>
-            <div class="lg:w-1/3 w-full lg:mr-6 mb-4">
-                <figure class="h-56 relative">
-                    <div class="w-full h-full left-0 top-0 absolute">
-                        <a href="/restaurants/2"><img alt="restaurant" class="w-full h-full object-cover"
-                                src="/images/tacos.jpeg"></a>
-                    </div>
-                </figure>
-                <div class="flex justify-between items-center pt-3 pb-3">
-                    <div class="flex flex-col">
-                        <a href="/restaurants/2" class="text-xl">O'Tacos</a>
-                        <div class="flex items-center text-sm">
-                            <div>1,99€ la livraison</div>
-                            <div class="ml-1 mr-1">•</div>
-                            <div>15-25 minutes</div>
+                    </figure>
+                    <div class="flex justify-between items-center pt-3 pb-3">
+                        <div class="flex flex-col">
+                            <a href="/restaurants/<%=  restaurant.id %>" class="text-xl"><%=  restaurant.data().name %></a>
+                            <div class="flex items-center text-sm">
+                                <div><%=  restaurant.data().deliveryFee %>€ la livraison</div>
+                                <div class="ml-1 mr-1">•</div>
+                                <div>~<%=  restaurant.data().deliveryTime %> minutes</div>
+                            </div>
                         </div>
+                        <div class="rounded-full p-2 bg-gray-400 h-10 w-10 flex justify-center items-center"><%=  restaurant.data().rating %></div>
                     </div>
-                    <div class="rounded-full p-2 bg-gray-400">4.2</div>
-                </div>
-                <hr class="border-gray-400 mt-2 mb-2">
-                <div class="text-xs text-gray-700">
-                    French • Sandwich
-                </div>
-            </div>
-            <div class="lg:w-1/3 w-full mb-4">
-                <figure class="h-56 relative">
-                    <div class="w-full h-full left-0 top-0 absolute">
-                        <a href="/restaurants/3"><img alt="restaurant" class="w-full h-full object-cover"
-                                src="/images/chinese.jpeg"></a>
+                    <hr class="border-gray-400 mt-2 mb-2">
+                    <div class="text-xs text-gray-700">
+                        <%=  restaurant.data().tags %>
                     </div>
-                </figure>
-                <div class="flex justify-between items-center pt-3 pb-3">
-                    <div class="flex flex-col">
-                        <a href="/restaurants/3" class="text-xl">Chez Tec Ly</a>
-                        <div class="flex items-center text-sm">
-                            <div>3,99€ la livraison</div>
-                            <div class="ml-1 mr-1">•</div>
-                            <div>20-30 minutes</div>
-                        </div>
-                    </div>
-                    <div class="rounded-full p-2 bg-gray-400">4.2</div>
                 </div>
-                <hr class="border-gray-400 mt-2 mb-2">
-                <div class="text-xs text-gray-700">
-                    Chinese
-                </div>
-            </div>
+            <% }); %>
         </div>
     </section>
     <hr class="border-gray-400 mt-10 mb-10">
