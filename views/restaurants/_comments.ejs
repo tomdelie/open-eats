@@ -1,11 +1,11 @@
 <section>
     <h2 class="text-2xl">Commentaires (0)</h2>
-    <form class="w-full xl:w-1/3 mt-4 flex items-start flex-col" action="/restaurants/<%= id %>">
+    <form class="w-full xl:w-1/3 mt-4 flex items-start flex-col" action="/restaurants/<%= id %>/commentaire" method="POST">
         <div class="mb-2">
             <label for="rating">Note : </label>
             <input type="number" id="rating" name="rating" min="0" max="5" value="0" class="p-1 border border-gray-400">
         </div>
-        <textarea class="w-full border border-gray-400 p-3"></textarea>
+        <textarea class="w-full border border-gray-400 p-1" id="comment" name="comment" placeholder="Recommenderiez-vous ce restaurant aux autres utilisateurs ?"></textarea>
         <input type="submit" value="Envoyer"
             class="mt-2 w-full xl:w-1/3 p-3 bg-green-600 cursor-pointer hover:bg-green-700 text-white font-bold">
     </form>
