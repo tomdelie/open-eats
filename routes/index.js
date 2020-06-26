@@ -13,19 +13,17 @@ router.get('/', async (req, res) => {
     restaurantsRating[restaurant.id] = 0;
 
     comments.forEach(comment => {
-      restaurantsRating[restaurant.id] += parseInt(comment.data().rating, 10)/comments.size;
+      restaurantsRating[restaurant.id] += parseInt(comment.data().rating, 10) / comments.size;
     });
-    
+
     restaurantsRating[restaurant.id] = restaurantsRating[restaurant.id].toFixed(1);
 
-    if (index >= restaurants.size-1) {
+    if (index >= restaurants.size - 1) {
       res.render('index', { title: 'Express', session: firebase.auth().currentUser, type: 'success', message: req.query.supprimer, restaurants: restaurants, restaurantsRating: restaurantsRating });
     }
 
     index++;
-
   });
-
 
 });
 

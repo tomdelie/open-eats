@@ -27,48 +27,57 @@
                 </svg>
                 <label for="search-bar" class="w-0">Recherche</label>
                 <input class="bg-gray-200 w-full pl-2" id="search-bar" autocomplete="off"
-                    placeholder="Rechercher un restaurant" value="">
+                    placeholder="Rechercher un restaurant par nom, catégorie ou adresse" value="">
             </div>
-            <button class="p-3 bg-black text-white ml-4">Trouver</button>
         </div>
     </div>
 </div>
 
 <div class="custom-container lg:pl-20 lg:pr-20 pl-4 pr-4 mt-10">
     <section>
-        <h2 class="text-2xl mb-6">Livraison à Paris</h2>
-        <div class="flex lg:flex-row flex-col">
+        <h2 class="text-2xl mb-6">Restaurants</h2>
+        <div class="flex lg:flex-row flex-col flex-wrap restaurants">
             <% restaurants.forEach(restaurant => { %>
-                <div class="lg:w-1/3 w-full lg:mr-6 mb-4">
-                    <figure class="h-56 relative">
-                        <div class="w-full h-full left-0 top-0 absolute">
-                            <a href="/restaurants/<%=  restaurant.id %>"><img alt="<%=  restaurant.data().name %>"
-                                    class="w-full h-full object-cover border origin-center" src="<%=  restaurant.data().bannerImage %>"></a>
-                        </div>
-                    </figure>
-                    <div class="flex justify-between items-center pt-3 pb-1">
-                        <div class="flex flex-col">
-                            <a href="/restaurants/<%=  restaurant.id %>" class="text-xl"><%=  restaurant.data().name %></a>
-                            <div class="flex items-center text-sm">
-                                <div><%=  restaurant.data().deliveryFee %>€ la livraison</div>
-                                <div class="ml-1 mr-1">•</div>
-                                <div>~<%=  restaurant.data().deliveryTime %> minutes</div>
-                            </div>
-                        </div>
-                        
-                        <div class="rounded-full p-2 bg-gray-400 h-10 w-10 flex justify-center items-center"><%= restaurantsRating[restaurant.id] %></div>
+            <div class="lg:w-1/3 w-full lg:pr-6 mb-4 restaurant" data-name="<%=  restaurant.data().name %>"
+                data-address="<%=  restaurant.data().address %>" 
+                data-tags="<%=  restaurant.data().tags %>">
+                <figure class="h-56 relative">
+                    <div class="w-full h-full left-0 top-0 absolute">
+                        <a href="/restaurants/<%=  restaurant.id %>"><img alt="<%=  restaurant.data().name %>"
+                                class="w-full h-full object-cover border origin-center"
+                                src="<%=  restaurant.data().bannerImage %>"></a>
                     </div>
-                    <hr class="border-gray-400 mt-2 mb-2">
-                    <div class="text-xs text-gray-700">
-                        <%=  restaurant.data().tags %>
+                </figure>
+                <div class="flex justify-between items-center pt-3 pb-1">
+                    <div class="flex flex-col">
+                        <a href="/restaurants/<%=  restaurant.id %>" class="text-xl"><%=  restaurant.data().name %></a>
+                        <span class="text-sm"><%=  restaurant.data().address %></span>
+                        <div class="flex items-center text-sm">
+                            <div><%=  restaurant.data().deliveryFee %>€ la livraison</div>
+                            <div class="ml-1 mr-1">•</div>
+                            <div>~<%=  restaurant.data().deliveryTime %> minutes</div>
+                        </div>
                     </div>
+
+                    <div class="rounded-full p-2 bg-gray-400 h-10 w-10 flex justify-center items-center">
+                        <%= restaurantsRating[restaurant.id] %></div>
                 </div>
+                <hr class="border-gray-400 mt-2 mb-2">
+                <div class="text-xs text-gray-700">
+                    <%=  restaurant.data().tags %>
+                </div>
+            </div>
             <% }); %>
+            <% if (restaurants.length >= 0 ) { %>
+            <div class="lg:w-1/3 w-full lg:pr-6 mb-4">
+                Aucun restaurant n'a été trouvé pour votre recherche...
+            </div>
+            <% } %>
         </div>
     </section>
     <hr class="border-gray-400 mt-10 mb-10">
     <section class="flex lg:flex-row flex-col items-center">
-        <div class="lg:w-1/3 w-full lg:mr-6 mb-4">
+        <div class="lg:w-1/3 w-full lg:pr-6 mb-4">
             <figure class="recruit-height relative">
                 <div class="w-full h-full left-0 top-0 absolute">
                     <img alt="feed-your-employees" class="w-full h-full object-cover"
@@ -83,7 +92,7 @@
                 </div>
             </div>
         </div>
-        <div class="lg:w-1/3 w-full lg:mr-6 mb-4">
+        <div class="lg:w-1/3 w-full lg:pr-6 mb-4">
             <figure class="recruit-height relative">
                 <div class="w-full h-full left-0 top-0 absolute">
                     <img alt="your-restaurant" class="w-full h-full object-cover" src="/images/your-restaurant.svg">
@@ -96,7 +105,7 @@
                 </div>
             </div>
         </div>
-        <div class="lg:w-1/3 w-full mb-4">
+        <div class="lg:w-1/3 w-full lg:pr-6 mb-4">
             <figure class="recruit-height relative">
                 <div class="w-full h-full left-0 top-0 absolute">
                     <img alt="deliver" class="w-full h-full object-cover" src="/images/deliver.svg">
@@ -111,5 +120,7 @@
         </div>
     </section>
 </div>
+
+<script src="/javascripts/search-bar.min.js"></script>
 
 <%- include('templates/footer') %>
