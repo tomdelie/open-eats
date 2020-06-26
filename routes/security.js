@@ -109,7 +109,20 @@ router.get('/parametres/supprimer', isLogin, (req, res) => {
 });
 
 router.get('/favoris', isLogin, async (req, res) => {
-  res.render('security/bookmarks', { restaurants: [], session: firebase.auth().currentUser });
+  const bookmarks = await db.collection('bookmarks').doc(firebase.auth().currentUser.uid).collection('products').get();
+  res.render('security/bookmarks', { session: firebase.auth().currentUser, bookmarks: bookmarks });
+});
+
+router.post('/favoris', isLogin, async (req, res) => {
+  const { restaurantId = null, productId, status } = req.body;
+  const product = await db.collection('restaurants').doc(restaurantId).collection('products').doc(productId).get();
+  db.collection('bookmarks').doc(firebase.auth().currentUser.uid).collection('products').doc(productId).set({ id: productId, ...product.data() });
+  res.sendStatus(200);
+});
+
+router.delete('/favoris/:productId', isLogin, async (req, res) => {
+  db.collection('bookmarks').doc(firebase.auth().currentUser.uid).collection('products').doc(req.params.productId).delete();
+  res.sendStatus(200);
 });
 
 module.exports = { router, isLogin };
