@@ -8,6 +8,7 @@ require('dayjs/locale/fr');
 router.get('/:id', async (req, res) => {
   const restaurant = await db.collection('restaurants').doc(req.params.id).get();
   const comments = await db.collection('restaurants').doc(req.params.id).collection('comments').orderBy('orderCreatedAt', 'desc').get();
+  const products = await db.collection('restaurants').doc(req.params.id).collection('products').get();
 
   const ratings = [];
   let averageRating = null;
@@ -30,7 +31,8 @@ router.get('/:id', async (req, res) => {
     restaurant: restaurant,
     comments: comments,
     session: firebase.auth().currentUser,
-    ratings: { averageRating: averageRating, ratingLength: ratings.length, graphicalRating: graphicalRating }
+    ratings: { averageRating: averageRating, ratingLength: ratings.length, graphicalRating: graphicalRating },
+    products: products
   });
 });
 

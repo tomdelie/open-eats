@@ -1,6 +1,5 @@
 const express = require('express');
-const { storageRef, firebaseApp: firebase } = require('../src/javascripts/firebaseInit.js');
-const { NotExtended } = require('http-errors');
+const { storageRef, firebaseApp: firebase, db } = require('../src/javascripts/firebaseInit.js');
 const router = express.Router();
 const multer = require('multer');
 
@@ -107,6 +106,10 @@ router.get('/parametres/supprimer', isLogin, (req, res) => {
     const encodedResponse = `Erreur : ${error}`;
     res.redirect(`/?supprimer=${encodedResponse}`);
   });
+});
+
+router.get('/favoris', isLogin, async (req, res) => {
+  res.render('security/bookmarks', { restaurants: [], session: firebase.auth().currentUser });
 });
 
 module.exports = { router, isLogin };

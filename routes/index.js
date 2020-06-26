@@ -6,8 +6,10 @@ const router = express.Router();
 /* GET home page. */
 router.get('/', async (req, res) => {
   const restaurants = await db.collection('restaurants').get();
+  
   let index = 0;
   const restaurantsRating = {};
+
   restaurants.forEach(async (restaurant) => {
     let comments = await db.collection('restaurants').doc(restaurant.id).collection('comments').get();
     restaurantsRating[restaurant.id] = 0;
