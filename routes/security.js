@@ -109,4 +109,4 @@ router.get('/parametres/supprimer', isLogin, (req, res) => {
   });
 });
 
-module.exports = router;
+module.exports = { router, isLogin };

@@ -43,3 +43,10 @@
 .h-full-custom-parameters {
     min-height: calc(100vh - 16.5rem);
 }
+
+.trailing-dots {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}

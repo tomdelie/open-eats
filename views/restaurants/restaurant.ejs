@@ -12,7 +12,7 @@
         <div class="flex items-start w-full justify-between xl:w-1/3 border border-gray-400 hover:border-black cursor-pointer">
             <div class="flex flex-col p-3">
                 <span class="pb-1 text-lg"><%= restaurant.data().products.product.title %></span>
-                <span class="text-gray-700 text-base pb-1"><%= restaurant.data().products.product.description %></span>
+                <span class="text-gray-700 text-base pb-1 trailing-dots"><%= restaurant.data().products.product.description %></span>
                 <span class="text-gray-700 text-base font-bold"><%= restaurant.data().products.product.price %>€</span>
             </div>
             <div class="flex flex-shrink-0 h-40 w-40"><img src="<%= restaurant.data().products.product.image %>" class="object-cover h-40 w-40"></div>
@@ -21,7 +21,7 @@
     <hr class="border-gray-400 mt-10 mb-10">
     <%- include('_ratings', { restaurant: restaurant }) %>
     <hr class="border-gray-400 mt-10 mb-10">
-    <%- include('_comments', { id: restaurant.id }) %>
+    <%- include('_comments', { id: restaurant.id, session: session }) %>
 </div>
 
 <%- include('../templates/footer') %>
