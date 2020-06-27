@@ -43,9 +43,11 @@
                 data-tags="<%=  restaurant.data().tags %>">
                 <figure class="h-56 relative">
                     <div class="w-full h-full left-0 top-0 absolute">
-                        <a href="/restaurants/<%=  restaurant.id %>"><img alt="<%=  restaurant.data().name %>"
-                                class="w-full h-full object-cover border origin-center"
-                                src="<%=  restaurant.data().bannerImage %>"></a>
+                        <a href="/restaurants/<%=  restaurant.id %>">
+                            <img alt="<%=  restaurant.data().name %>"
+                                class="lazy w-full h-full object-cover border origin-center"
+                                src="/images/placeholder.png"
+                                data-src="<%=  restaurant.data().bannerImage %>"></a>
                     </div>
                 </figure>
                 <div class="flex justify-between items-center pt-3 pb-1">
@@ -75,8 +77,8 @@
         <div class="lg:w-1/3 w-full lg:pr-6 mb-4">
             <figure class="recruit-height relative">
                 <div class="w-full h-full left-0 top-0 absolute">
-                    <img alt="feed-your-employees" class="w-full h-full object-cover"
-                        src="/images/feed-your-employees.svg">
+                    <img alt="feed-your-employees" class="lazy w-full h-full object-cover"
+                        src="/images/placeholder.png" data-src="/images/feed-your-employees.svg">
                 </div>
             </figure>
             <div class="flex flex-col pt-3 pb-3">
@@ -90,7 +92,7 @@
         <div class="lg:w-1/3 w-full lg:pr-6 mb-4">
             <figure class="recruit-height relative">
                 <div class="w-full h-full left-0 top-0 absolute">
-                    <img alt="your-restaurant" class="w-full h-full object-cover" src="/images/your-restaurant.svg">
+                    <img alt="your-restaurant" class="lazy w-full h-full object-cover" src="/images/placeholder.png" data-src="/images/your-restaurant.svg">
                 </div>
             </figure>
             <div class="flex flex-col pt-3 pb-3">
@@ -103,7 +105,7 @@
         <div class="lg:w-1/3 w-full lg:pr-6 mb-4">
             <figure class="recruit-height relative">
                 <div class="w-full h-full left-0 top-0 absolute">
-                    <img alt="deliver" class="w-full h-full object-cover" src="/images/deliver.svg">
+                    <img alt="deliver" class="lazy w-full h-full object-cover" src="/images/placeholder.png" data-src="/images/deliver.svg">
                 </div>
             </figure>
             <div class="flex flex-col pt-3 pb-3">
