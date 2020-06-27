@@ -1,17 +1,27 @@
 <section>
-    <h2 class="text-2xl mb-4">Produits</h2>
+    <h2 class="text-2xl mb-3">Produits</h2>
+
     <% products.forEach(product => { %>
-        <div class="product flex items-start w-full justify-between xl:w-1/3 border border-gray-400 hover:border-black cursor-pointer" data-status="false" data-restaurant-id="<%= restaurant.id %>" data-product-id="<%= product.id %>">
-            <div class="flex flex-col p-3">
-                <span class="pb-1 text-lg flex items-center"><%= product.data().title %>
-                    
-                    <img class="bookmark ml-2"
-                        src="/images/star.svg"></span>
-                <span class="text-gray-700 text-base pb-1 trailing-dots"><%= product.data().description %></span>
-                <span class="text-gray-700 text-base font-bold"><%= product.data().price %>€</span>
-            </div>
-            <div class="flex flex-shrink-0 h-40 w-40">
-                <img src="<%=product.data().image %>" class="object-cover h-40 w-40">
+        <div class="w-full xl:w-1/3 xl:pr-3 pt-3">
+            <div class="product flex items-start w-full justify-between border border-gray-400 hover:border-black cursor-pointer"
+                <% if (session) { %> data-status="<%= bookmarks[product.id] %>" <% } %>
+                data-restaurant-id="<%= restaurant.id %>" data-product-id="<%= product.id %>">
+                <div class="flex flex-col p-3">
+                    <span class="pb-1 text-lg flex items-center"><%= product.data().title %>
+                        <% if (session) { %>
+                            <% if (bookmarks[product.id]) { %>
+                                <img class="bookmark ml-2" src="/images/star-checked.svg">
+                            <% } else { %>
+                                <img class="bookmark ml-2" src="/images/star.svg">
+                            <% } %>
+                        <% } %>
+                    </span>
+                    <span class="text-gray-700 text-base pb-1 trailing-dots"><%= product.data().description %></span>
+                    <span class="text-gray-700 text-base font-bold"><%= product.data().price %>€</span>
+                </div>
+                <div class="flex flex-shrink-0 h-40 w-40">
+                    <img src="<%=product.data().image %>" class="object-cover h-40 w-40">
+                </div>
             </div>
         </div>
     <% }); %>

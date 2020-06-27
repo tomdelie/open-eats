@@ -1,8 +1,8 @@
 const handleBookmark = (event) => {
     const product = event.target.closest('.product');
     const { productId, restaurantId, status } = product.dataset;
-    console.log(status)
-    if (status === true) {
+
+    if (status === 'true') {
         fetch(`/favoris/${productId}`, {
             method: 'DELETE',
         }).then(() => {

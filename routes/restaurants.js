@@ -10,9 +10,10 @@ router.get('/:id', async (req, res) => {
   const comments = await db.collection('restaurants').doc(req.params.id).collection('comments').orderBy('orderCreatedAt', 'desc').get();
   const products = await db.collection('restaurants').doc(req.params.id).collection('products').get();
 
+  // ratings
   const ratings = [];
   let averageRating = null;
-  let graphicalRating = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
+  let graphicalRating = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
 
   comments.forEach(comment => {
     const rating = parseInt(comment.data().rating, 10);
@@ -22,18 +23,41 @@ router.get('/:id', async (req, res) => {
   });
 
   Object.values(graphicalRating).forEach((rating, index) => {
-    graphicalRating[index+1] = rating ? (rating/ratings.length)*100 : 0;
+    graphicalRating[index + 1] = rating ? (rating / ratings.length) * 100 : 0;
   });
 
-  averageRating = averageRating/ratings.length;
+  averageRating = averageRating / ratings.length;
 
-  res.render('restaurants/restaurant', {
-    restaurant: restaurant,
-    comments: comments,
-    session: firebase.auth().currentUser,
-    ratings: { averageRating: averageRating, ratingLength: ratings.length, graphicalRating: graphicalRating },
-    products: products
-  });
+  // bookmarks
+  if (firebase.auth().currentUser) {
+    let index = 0;
+    const bookmarks = {};
+    products.forEach(async product => {
+      const bookmark = await db.collection('bookmarks').doc(firebase.auth().currentUser.uid).collection('products').doc(product.id).get();
+      bookmarks[product.id] = bookmark.exists;
+
+      if (index >= products.size - 1) {
+        res.render('restaurants/restaurant', {
+          restaurant: restaurant,
+          comments: comments,
+          session: firebase.auth().currentUser,
+          ratings: { averageRating: averageRating, ratingLength: ratings.length, graphicalRating: graphicalRating },
+          products: products,
+          bookmarks: bookmarks
+        });
+      }
+
+      index++;
+    });
+  } else {
+    res.render('restaurants/restaurant', {
+      restaurant: restaurant,
+      comments: comments,
+      session: firebase.auth().currentUser,
+      ratings: { averageRating: averageRating, ratingLength: ratings.length, graphicalRating: graphicalRating },
+      products: products
+    });
+  }
 });
 
 router.post('/:id/commentaire', isLogin, async (req, res) => {

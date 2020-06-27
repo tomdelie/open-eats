@@ -4,18 +4,20 @@
 
 <div class="custom-container lg:pl-20 lg:pr-20 pl-4 pr-4 mt-10 h-full-custom">
     <section>
-        <h2 class="text-2xl mb-6">Plats favoris</h2>
+        <h2 class="text-2xl mb-3">Plats favoris</h2>
         <div class="flex lg:flex-row flex-col flex-wrap restaurants">
             <% if (bookmarks.size) { %>
                     <% bookmarks.forEach(bookmark => { %>
-                        <div class="product flex items-start w-full justify-between xl:w-1/3 border border-gray-400 hover:border-black cursor-pointer" data-status="false" data-product-id="<%= bookmark.id %>">
-                            <div class="flex flex-col p-3">
-                                <span class="flex items-center pb-1 text-lg"><%= bookmark.data().title %>
-                                        <img class="bookmark ml-2" src="/images/star-checked.svg"></span>
-                                <span class="text-gray-700 text-base pb-1 trailing-dots"><%= bookmark.data().description %></span>
-                                <span class="text-gray-700 text-base font-bold"><%= bookmark.data().price %>€</span>
+                        <div class="w-full xl:w-1/3 xl:pr-3 pt-3">
+                            <div class="product flex items-start w-full justify-between border border-gray-400 hover:border-black cursor-pointer" data-status="true" data-product-id="<%= bookmark.id %>">
+                                <div class="flex flex-col p-3">
+                                    <span class="flex items-center pb-1 text-lg"><%= bookmark.data().title %>
+                                            <img class="bookmark ml-2" src="/images/star-checked.svg"></span>
+                                    <span class="text-gray-700 text-base pb-1 trailing-dots"><%= bookmark.data().description %></span>
+                                    <span class="text-gray-700 text-base font-bold"><%= bookmark.data().price %>€</span>
+                                </div>
+                                <div class="flex flex-shrink-0 h-40 w-40"><img src="<%=bookmark.data().image %>" class="object-cover h-40 w-40"></div>
                             </div>
-                            <div class="flex flex-shrink-0 h-40 w-40"><img src="<%=bookmark.data().image %>" class="object-cover h-40 w-40"></div>
                         </div>
                     <% }); %>
             <% } else { %>
