@@ -68,7 +68,7 @@ router.post('/:id/commentaire', isLogin, async (req, res) => {
     rating: rating,
     user: firebase.auth().currentUser.email,
     photoURL: firebase.auth().currentUser.photoURL,
-    createdAt: dayjs(new Date()).locale('fr').format('DD MMMM YYYY à hh:mm'),
+    createdAt: dayjs(new Date()).locale('fr').format('DD MMMM YYYY à HH:mm'),
     orderCreatedAt: new Date()
   });
 

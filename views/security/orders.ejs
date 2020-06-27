@@ -1,0 +1,36 @@
+<%- include('../templates/header', {
+    hideNavbar: false
+}) %>
+
+<div class="custom-container lg:pl-20 lg:pr-20 pl-4 pr-4 mt-10 h-full-custom">
+    <section>
+        <h2 class="text-2xl mb-3">Toutes vos commandes (<%= orders.size %>)</h2>
+        <div class="flex lg:flex-row flex-col flex-wrap orders">
+            <% let index = 0 %>
+            <% orders.forEach((order) => { %>
+                <div class="pr-3">
+                    <div class="order flex flex-col p-3 border border-gray-400">
+                        <h3 class="text-lg">Commande #<%= orders.size - index %> <span class="text-sm">(<%= ordersDayjs[order.id] %>)</span>
+                        </h3>
+                        <div class="flex flex-col mt-3 mb-3">
+                            <% for (let i = 0 ; i < Object.keys(order.data()).length-2 ; i++) { %>
+                                <div class="flex items-center justify-between">
+                                    <span><%= order.data()[i].name %></span>
+                                    <span><%= order.data()[i].price %></span>
+                                </div>
+                            <% } %>
+                            
+                        </div>
+                        <span class="text-right text-lg">Total TTC : <span
+                                class="text-green-600"><%= order.data().price %>€</span></span>
+                    </div>
+                </div>
+            <% index += 1 %>
+            <% }) %>
+        </div>
+    </section>
+</div>
+
+<script src="/javascripts/product.min.js"></script>
+
+<%- include('./_footer') %>

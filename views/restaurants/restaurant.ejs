@@ -9,6 +9,17 @@
 <div class="custom-container lg:pl-20 lg:pr-20 pl-4 pr-4 mt-10">
     <hr class="border-gray-400 mt-10 mb-10">
     <%- include('_products') %>
+    <% if (session) { %> 
+        <div id="order-button" class="flex mt-4 w-64" style="display: none">
+            <button class="flex items-center justify-between w-full p-3 bg-black cursor-pointer hover:bg-gray-900 text-white">
+                <div></div>
+                <span class="font-bold self-center">Commander</span>
+                <span class="text-sm" id="order-price"></span>
+            </button>
+        </div>
+    <% } else { %>
+        <div class="mt-4">Vous devez être connecté pour commander.</div>
+    <% } %>
     <hr class="border-gray-400 mt-10 mb-10">
     <%- include('_ratings', { restaurant: restaurant }) %>
     <hr class="border-gray-400 mt-10 mb-10">
@@ -16,5 +27,9 @@
 </div>
 
 <script src="/javascripts/product.min.js"></script>
+
+<% if (session) { %>
+    <script src="/javascripts/order.min.js"></script>
+<% } %>
 
 <%- include('../templates/footer') %>

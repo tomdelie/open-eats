@@ -3,13 +3,14 @@ const handleBookmark = (event) => {
     const { productId, restaurantId, status } = product.dataset;
 
     if (status === 'true') {
+        event.target.src = '/images/star.svg';
         fetch(`/favoris/${productId}`, {
             method: 'DELETE',
         }).then(() => {
-            event.target.src = '/images/star.svg';
             product.dataset.status = false;
         });
     } else {
+        event.target.src = '/images/star-checked.svg';
         fetch('/favoris', {
             method: 'POST',
             headers: {
@@ -17,7 +18,6 @@ const handleBookmark = (event) => {
             },
             body: JSON.stringify({ restaurantId: restaurantId, productId: productId, status: status })
         }).then(() => {
-            event.target.src = '/images/star-checked.svg';
             product.dataset.status = true;
         });
     }

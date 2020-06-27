@@ -2,6 +2,8 @@ const express = require('express');
 const { storageRef, firebaseApp: firebase, db } = require('../src/javascripts/firebaseInit.js');
 const router = express.Router();
 const multer = require('multer');
+const dayjs = require('dayjs');
+require('dayjs/locale/fr');
 
 const uploader = multer({
   storage: multer.memoryStorage(),
@@ -99,13 +101,13 @@ router.post('/parametres', isLogin, uploader.single('avatar'), (req, res) => {
 
 router.get('/parametres/supprimer', isLogin, (req, res) => {
   firebase.auth().currentUser.delete()
-  .then(() => {
-    const encodedResponse = 'Votre compte a bien été supprimé.';
-    res.redirect(`/?supprimer=${encodedResponse}`);
-  }).catch((error) => {
-    const encodedResponse = `Erreur : ${error}`;
-    res.redirect(`/?supprimer=${encodedResponse}`);
-  });
+    .then(() => {
+      const encodedResponse = 'Votre compte a bien été supprimé.';
+      res.redirect(`/?supprimer=${encodedResponse}`);
+    }).catch((error) => {
+      const encodedResponse = `Erreur : ${error}`;
+      res.redirect(`/?supprimer=${encodedResponse}`);
+    });
 });
 
 router.get('/favoris', isLogin, async (req, res) => {
@@ -116,13 +118,35 @@ router.get('/favoris', isLogin, async (req, res) => {
 router.post('/favoris', isLogin, async (req, res) => {
   const { restaurantId = null, productId, status } = req.body;
   const product = await db.collection('restaurants').doc(restaurantId).collection('products').doc(productId).get();
-  db.collection('bookmarks').doc(firebase.auth().currentUser.uid).collection('products').doc(productId).set({ id: productId, ...product.data() });
+  db.collection('bookmarks').doc(firebase.auth().currentUser.uid).collection('products').doc(productId).set({ id: productId, restaurantId: restaurantId, ...product.data() });
   res.sendStatus(200);
 });
 
 router.delete('/favoris/:productId', isLogin, async (req, res) => {
   db.collection('bookmarks').doc(firebase.auth().currentUser.uid).collection('products').doc(req.params.productId).delete();
   res.sendStatus(200);
+});
+
+router.get('/commandes', isLogin, async (req, res) => {
+  const orders = await db.collection('orders').doc(firebase.auth().currentUser.uid).collection('orders').orderBy('createdAt', 'desc').get();
+  const ordersDayjs = [];
+  orders.forEach(order => {
+    ordersDayjs[order.id] = dayjs(new Date(order.data().createdAt.seconds*1000)).locale('fr').format('DD MMMM YYYY à HH:mm:ss')
+  });
+
+  res.render('security/orders', { orders: orders, ordersDayjs: ordersDayjs, session: firebase.auth().currentUser });
+});
+
+router.post('/commande', isLogin, (req, res) => {
+  const { price, items } = req.body;
+  const order = {
+    price,
+    createdAt: new Date(), 
+    ...items
+  };
+
+  db.collection('orders').doc(firebase.auth().currentUser.uid).collection('orders').doc().set(order)
+    .then(() => res.sendStatus(200));
 });
 
 module.exports = { router, isLogin };
