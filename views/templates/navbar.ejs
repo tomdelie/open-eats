@@ -1,8 +1,14 @@
 <nav class="flex items-center justify-between flex-wrap relative h-20 z-10 lg:pl-20 lg:pr-20 pl-4 pr-4">
-  <div class="text-white mr-2">
+  <div class="flex flex-col sm:flex-row text-white mr-2">
     <a href="/" class="flex items-center flex-shrink-0">
       <img src="/images/open-eats.svg" alt="logo" class="mr-2">
     </a>
+    <div id="status-indicator" class="sm:ml-4 flex align-items items-center text-black">
+      <svg height="16" width="16">
+        <circle cx="8" cy="8" r="8" stroke-width="3" fill="#2f855a" />
+      </svg>
+      <span class="ml-2 text-sm">En ligne</span>
+    </div>
   </div>
   <div class="flex items-center">
     <% if (session) { %>
@@ -21,39 +27,30 @@
         <svg class="fill-current h-4 w-4 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
           <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /> </svg>
       </button>
-      <ul class="w-full dropdown-menu absolute hidden text-black pt-1 shadow-md">
-        <li>
-          <span class="rounded-t bg-gray-200 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap">
-            <div id="status-indicator" class="flex align-items">
-              <svg height="16" width="16" class="mt-1 mr-2">
-                <circle cx="8" cy="8" r="8" stroke-width="3" fill="#2f855a" />
-              </svg>
-              <span>En ligne</span>
-          </span>
+      <ul class="bg-gray-200 w-full dropdown-menu absolute hidden text-black pt-1 shadow-md">
+        <li><a class="bg-gray-200 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap" href="/commandes">Commandes</a>
+        </li>
+        <li><a class="bg-gray-200 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap" href="/favoris">Favoris</a>
+        </li>
+        <li><a class="bg-gray-200 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap"
+            href="/parametres">Paramètres</a>
+        </li>
+        <li><a class="rounded-b bg-gray-200 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap"
+            href="/deconnexion">Déconnexion</a></li>
+      </ul>
     </div>
-    </li>
-    <li><a class="bg-gray-200 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap" href="/commandes">Mes commandes</a>
-    </li>
-    <li><a class="bg-gray-200 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap" href="/favoris">Favoris</a>
-    </li>
-    <li><a class="bg-gray-200 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap" href="/parametres">Paramètres</a>
-    </li>
-    <li><a class="rounded-b bg-gray-200 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap"
-        href="/deconnexion">Déconnexion</a></li>
-    </ul>
-  </div>
-  <% } else { %>
-  <div class="text-sm mr-8">
-    <a href="/connexion">
-      Se connecter
-    </a>
-  </div>
-  <div class="text-sm">
-    <a href="/inscription">
-      S'inscrire
-    </a>
-  </div>
-  <% } %>
+    <% } else { %>
+    <div class="text-sm mr-8">
+      <a href="/connexion">
+        Se connecter
+      </a>
+    </div>
+    <div class="text-sm">
+      <a href="/inscription">
+        S'inscrire
+      </a>
+    </div>
+    <% } %>
   </div>
 
 </nav>
