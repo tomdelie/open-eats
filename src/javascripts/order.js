@@ -1,3 +1,5 @@
+const { areNotificationsAllowed } = require('./notifications.js');
+
 const products = document.getElementsByClassName('product');
 const orderButton = document.getElementById('order-button');
 const orderPrice = document.getElementById('order-price');
@@ -51,6 +53,17 @@ const unselectAll = () => {
     });
 };
 
+const orderNotification = () => {
+    if (areNotificationsAllowed()) {
+        navigator.serviceWorker.getRegistration().then(reg => {
+            let options = {
+                body: 'Notre meilleur coursier multi-médaillé au JO de Tokyo vous livrera dans 10 minutes.',
+            }
+            reg.showNotification('Vous avez commandé un repas !', options);
+        });
+    }
+};
+
 const handleOrder = () => {
     fetch('/commande', {
         method: 'POST',
@@ -60,6 +73,7 @@ const handleOrder = () => {
         body: JSON.stringify({ price: price, items: items })
     }).then(() => {
         unselectAll();
+        orderNotification();
     });
 };
 
