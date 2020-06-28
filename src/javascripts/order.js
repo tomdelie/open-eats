@@ -26,18 +26,20 @@ const displayOrderButton = () => {
 };
 
 const handleSelection = (event) => {
-    const product = event.target.closest('.product');
-    if (product.dataset.selected === 'false') {
-        product.dataset.selected = 'true';
-        product.style.border = '2px solid #48bb78';
-        product.style.backgroundColor = '#c6f6d5';
-    } else {
-        product.dataset.selected = 'false';
-        product.style.border = '';
-        product.style.backgroundColor = '';
+    if (!event.target.classList.contains('bookmark')) {
+        const product = event.target.closest('.product');
+        if (product.dataset.selected === 'false') {
+            product.dataset.selected = 'true';
+            product.style.border = '2px solid #48bb78';
+            product.style.backgroundColor = '#c6f6d5';
+        } else {
+            product.dataset.selected = 'false';
+            product.style.border = '';
+            product.style.backgroundColor = '';
+        }
+    
+        displayOrderButton();
     }
-
-    displayOrderButton();
 };
 
 const unselectAll = () => {
