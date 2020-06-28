@@ -57,7 +57,7 @@ const orderNotification = () => {
     if (areNotificationsAllowed()) {
         navigator.serviceWorker.getRegistration().then(reg => {
             let options = {
-                body: 'Notre meilleur coursier multi-médaillé au JO de Tokyo vous livrera dans 10 minutes.',
+                body: 'Notre meilleur coursier multi-médaillé aux JO de Tokyo vous livrera dans 10 minutes.',
             }
             reg.showNotification('Vous avez commandé un repas !', options);
         });
