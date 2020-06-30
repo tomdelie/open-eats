@@ -10,9 +10,9 @@
                         <span class="pb-1 text-lg flex items-center"><%= product.data().title %>
                             <% if (session) { %>
                                 <% if (bookmarks[product.id]) { %>
-                                    <img class="bookmark ml-2" src="/images/star-checked.svg">
+                                    <img class="bookmark ml-2" src="/images/star-checked.svg" alt="checked-star">
                                 <% } else { %>
-                                    <img class="bookmark ml-2" src="/images/star.svg">
+                                    <img class="bookmark ml-2" src="/images/star.svg" alt="star">
                                 <% } %>
                             <% } %>
                         </span>
@@ -20,7 +20,7 @@
                         <span class="text-gray-700 text-base font-bold"><%= product.data().price %>€</span>
                     </div>
                     <div class="flex flex-shrink-0 h-40 w-40">
-                        <img src="/images/placeholder.png" data-src="<%=product.data().image %>" class="lazy object-cover h-40 w-40">
+                        <img src="/images/placeholder.png" data-src="<%=product.data().image %>" class="lazy object-cover h-40 w-40" alt="placeholder">
                     </div>
                 </div>
             </div>
