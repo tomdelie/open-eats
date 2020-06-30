@@ -1,8 +1,6 @@
-console.log('sw is sleeping')
-/*
 const cacheVersion = 'v1';
 
-const excludeFromCache = ['https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png', 'http://localhost:3000/connexion', 'http://localhost:3000/deconnexion'];
+const excludeFromCache = ['https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'];
 
 self.addEventListener('install', function (event) {
   event.waitUntil(
@@ -11,6 +9,13 @@ self.addEventListener('install', function (event) {
         return cache.addAll([
           '/',
           '/stylesheets/tailwind.min.css',
+          '/javascripts/firebaseInit.min.js',
+          '/javascripts/network.min.js',
+          '/javascripts/notifications.min.js',
+          '/javascripts/order.min.js',
+          '/javascripts/product.min.js',
+          '/javascripts/search-bar.min.js',
+          '/javascripts/service-worker-init.min.js',
         ]);
       })
   );
@@ -23,7 +28,6 @@ self.addEventListener('activate', function (event) {
 self.addEventListener('fetch', function (event) {
   const url = new URL(event.request.url);
   const link = `${url.origin}${url.pathname}`;
-  console.log(link, !excludeFromCache.includes(link));
 
   if (event.request.method === 'GET' && !excludeFromCache.includes(link)) {
     event.respondWith(
@@ -73,4 +77,3 @@ self.addEventListener('notificationclick', event => {
     clients.openWindow('https://google.fr')
   }
 });
-*/

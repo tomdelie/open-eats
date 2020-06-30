@@ -101,7 +101,7 @@ const config = {
       filename: '../dist/stylesheets/[name].min.css'
     }),
   ],
-  watch: true,
+  watch: process.env.NODE_ENV !== 'production',
 };
 
 module.exports = config;

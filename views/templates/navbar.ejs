@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="flex items-center">
-    <div class="dropdown inline-block relative mr-4 sm:mr-20">
+    <div class="dropdown inline-block relative mr-4 sm:mr-20 text-sm">
       <button class="font-semibold py-2 inline-flex items-center">
             <img class="cursor-pointer" id="permission-icon" src="/images/notifications.svg" alt="notifications">
       </button>
@@ -33,7 +33,7 @@
 
     <% if (session) { %>
     <div class="dropdown inline-block relative ">
-      <button class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
+      <button class="bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
         <span class="mr-0 md:mr-1">
           <div class="text-sm mr-6 flex items-center">
             <% if (session.photoURL) { %>
@@ -47,15 +47,15 @@
         <svg class="fill-current h-4 w-4 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
           <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /> </svg>
       </button>
-      <ul class="rounded bg-gray-300 w-full dropdown-menu absolute hidden text-black pt-1 shadow-md">
-        <li><a class="bg-gray-300 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap" href="/commandes">Commandes</a>
+      <ul class="rounded bg-gray-200 w-full dropdown-menu absolute hidden text-black pt-1 shadow-md">
+        <li><a class="bg-gray-200 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap" href="/commandes">Commandes</a>
         </li>
-        <li><a class="bg-gray-300 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap" href="/favoris">Favoris</a>
+        <li><a class="bg-gray-200 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap" href="/favoris">Favoris</a>
         </li>
-        <li><a class="bg-gray-300 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap"
+        <li><a class="bg-gray-200 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap"
             href="/parametres">Paramètres</a>
         </li>
-        <li><a class="rounded-b bg-gray-300 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap"
+        <li><a class="rounded-b bg-gray-200 hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap"
             href="/deconnexion">Déconnexion</a></li>
       </ul>
     </div>
