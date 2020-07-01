@@ -13,7 +13,7 @@
                         <h3 class="text-lg">Commande #<%= orders.size - index %> <span class="text-sm">(<%= ordersDayjs[order.id] %>)</span>
                         </h3>
                         <div class="order-items flex flex-col h-full mt-3 mb-3">
-                            <% for (let i = 0 ; i < Object.keys(order.data()).length-2 ; i++) { %>
+                            <% for (let i = 0 ; i < Object.keys(order.data()).length-3 ; i++) { %>
                                 <div class="flex items-center justify-between">
                                     <span><%= order.data()[i].name %></span>
                                     <span><%= order.data()[i].price %></span>

@@ -2,6 +2,7 @@ const firebase = require('firebase/app');
 require('firebase/analytics');
 require('firebase/auth');
 require('firebase/firestore');
+require('firebase/messaging');
 require('firebase/storage');
 
 const firebaseConfig = {
@@ -19,4 +20,4 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 const storage = firebase.storage();
 const db = firebase.firestore();
 
-module.exports = { storageRef: storage.ref(), firebaseApp: firebaseApp, db: db };
+module.exports = { firebase: firebase, storageRef: storage.ref(), firebaseApp: firebaseApp, db: db };

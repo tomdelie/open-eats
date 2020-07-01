@@ -138,9 +138,10 @@ router.get('/commandes', isLogin, async (req, res) => {
 });
 
 router.post('/commande', isLogin, (req, res) => {
-  const { price, items } = req.body;
+  const { price, token, items } = req.body;
   const order = {
     price,
+    token,
     createdAt: new Date(), 
     ...items
   };

@@ -1,10 +1,12 @@
 const { areNotificationsAllowed } = require('./notifications.js');
+const { firebase } = require('./firebaseInit.js');
+const messaging = firebase.messaging();
 
 const products = document.getElementsByClassName('product');
 const orderButton = document.getElementById('order-button');
 const orderPrice = document.getElementById('order-price');
 let price = 0;
-let items = []; 
+let items = [];
 
 const displayOrderButton = () => {
     let selections = 0;
@@ -39,30 +41,28 @@ const handleSelection = (event) => {
             product.style.border = '';
             product.style.backgroundColor = '';
         }
-    
+
         displayOrderButton();
     }
 };
 
 const unselectAll = () => {
-    Object.values(products).forEach(product => { 
-        product.dataset.selected = 'false'; 
+    Object.values(products).forEach(product => {
+        product.dataset.selected = 'false';
         product.style.border = '';
         product.style.backgroundColor = '';
         displayOrderButton();
     });
 };
 
-const orderNotification = () => {
-    if (areNotificationsAllowed()) {
-        navigator.serviceWorker.getRegistration().then(reg => {
-            let options = {
-                body: 'Notre meilleur coursier multi-médaillé aux JO de Tokyo vous livrera dans 10 minutes.',
-            }
-            reg.showNotification('Vous avez commandé un repas !', options);
-        });
-    }
-};
+messaging.onMessage((payload) => {
+    console.log('messaging.onMessage triggered');
+    const { body, title } = payload.notification;
+
+    document.getElementById('ordered-modal').style.display = 'block';
+    document.getElementById('ordered-title').textContent = title;
+    document.getElementById('ordered-body').textContent = body;
+});
 
 const handleOrder = () => {
     fetch('/commande', {
@@ -70,13 +70,12 @@ const handleOrder = () => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ price: price, items: items })
+        body: JSON.stringify({ price: price, token: localStorage.getItem('token'), items: items })
     }).then(() => {
         unselectAll();
-        orderNotification();
     });
 };
 
 // LISTENERS ------------
-Object.values(products).forEach(product => product.addEventListener('click', handleSelection) );
+Object.values(products).forEach(product => product.addEventListener('click', handleSelection));
 orderButton.addEventListener('click', handleOrder);

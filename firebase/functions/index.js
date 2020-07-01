@@ -7,16 +7,17 @@ admin.initializeApp({
     databaseURL: "https://pwa-esgi-9b79e.firebaseio.com"
 });
 
-exports.helloWorld = functions.https.onRequest((req, res) => {
-    const queryText = 'sushi';
-    admin.firestore().collection('restaurants').get()
-    .then(snapshot => {
-        let collection = snapshot.docs.map(doc => doc.data());
-        res.status(200).send(collection);
-        return;
-    })
-    .catch(err => {
-        console.log(err)
-        res.status(500).send(err);
-    })
+exports.sendNotificationOnOrder = functions.firestore.document('orders/{uid}/orders/{orderid}').onWrite(async (event) => {
+    
+    let fcmToken = event.after.get('token');
+    let price = event.after.get('price');
+
+    const message = {
+        notification: {
+            title: `Vous avez payé ${price}€`,
+            body: 'Notre meilleur coursier multi-médaillé aux JO de Tokyo vous livrera dans 5 minutes.'
+        }
+    };
+
+    let response = await admin.messaging().sendToDevice(fcmToken, message);
 });
