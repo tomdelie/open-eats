@@ -25,12 +25,12 @@ const setPermission = (status) => {
 };
 
 const requestPermission = (event) => {
+    setPermission(event.target.dataset.status);
+    
     if (Notification.permission === 'default') {
         Notification.requestPermission(status => {
             setPermission(status);
         });
-    } else {
-        setPermission(event.target.dataset.status);
     }
 };
 
