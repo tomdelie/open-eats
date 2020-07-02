@@ -18,7 +18,7 @@
                             <% } %>
                         </span>
                         <span class="text-gray-700 text-base pb-1 trailing-dots"><%= product.data().description %></span>
-                        <span class="text-gray-700 text-base font-bold"><%= product.data().price %>€</span>
+                        <span class="text-gray-700 text-base font-bold"><%= product.data().price.toFixed(2) %>€</span>
                     </div>
                     <div class="flex flex-shrink-0 h-40 w-40">
                         <img src="/images/placeholder.png" data-src="<%=product.data().image %>" class="lazy object-cover h-40 w-40" alt="placeholder">
