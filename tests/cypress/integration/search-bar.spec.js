@@ -19,11 +19,11 @@ describe('Search bar', () => {
     
     it('Find Sushiko restaurant by address', () => {
         cy.visit('http://localhost:3000');
-        const searchValue = '64 Rue Mouffetard, 75005 Paris, France, Île-de-France 75005';
+        const searchValue = '64 Rue Mouffetard';
         cy.get('#search-bar').type(searchValue);
 
         cy.get('.restaurants > .restaurant').each(restaurant => {
-            if (restaurant.data().address === searchValue) {
+            if (restaurant.data().address.includes(searchValue)) {
                 cy.wrap(restaurant).then((restaurant) => {
                     expect(Cypress.dom.isVisible(restaurant)).to.be.true;
                 });
