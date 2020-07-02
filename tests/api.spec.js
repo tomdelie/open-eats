@@ -1,3 +1,5 @@
+const app = require('../app.js');
+
 const chai = require('chai');
 const { expect } = chai;
 const chaiHttp = require('chai-http');
@@ -9,7 +11,7 @@ describe('API', () => {
   const productId = 'crLOIlYJ0u0tRCuFU4TZ';
 
   it('GET /restaurants', (done) => {
-    chai.request('http://localhost:3000')
+    chai.request(app)
       .get('/api/restaurants')
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -20,7 +22,7 @@ describe('API', () => {
 
   it('GET /restaurants/:id', (done) => {
     const expectedRestaurant = { "tags": "Sushi • Japanese", "bannerImage": "/images/sushiko-maxres.jpeg", "name": "Sushiko", "address": "64 Rue Mouffetard, 75005 Paris, France, Île-de-France 75005", "deliveryTime": 15, "deliveryFee": 4.45 };
-    chai.request('http://localhost:3000')
+    chai.request(app)
       .get(`/api/restaurants/${restaurantId}`)
       .end((err, res) => {
         const restaurant = res.body;
@@ -32,7 +34,7 @@ describe('API', () => {
   });
 
   it('GET /restaurants/:id/products', (done) => {
-    chai.request('http://localhost:3000')
+    chai.request(app)
       .get(`/api/restaurants/${restaurantId}/products`)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -43,7 +45,7 @@ describe('API', () => {
 
   it('GET /restaurants/:restaurantId/products/:productId', (done) => {
     const expectedProduct = { "description": "Salade de choux et carotte", "title": "Salade de choux", "price": 2.99, "image": "/images/choux.jpeg"};
-    chai.request('http://localhost:3000')
+    chai.request(app)
       .get(`/api/restaurants/${restaurantId}/products/${productId}`)
       .end((err, res) => {
         const product = res.body;

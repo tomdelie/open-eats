@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "cy:open": "cypress open",
-    "test": "nyc mocha 'tests/*.spec.js'",
+    "test": "nyc mocha 'tests/*.spec.js' --exit",
     "start": "nodemon app.js",
     "start:prod": "NODE_ENV=production node app.js",
     "webpack:dev": "webpack --mode=development",
