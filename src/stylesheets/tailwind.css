@@ -3,7 +3,23 @@
 @tailwind utilities;
 
 .banner-green {
-    background-color: #66D19E;
+    background-color: #66D19E !important;
+}
+
+.banner-red {
+    background-color: #d16666 !important;
+}
+
+.banner-pink {
+    background-color: #ca66d1ab !important;
+}
+
+.banner-purple {
+    background-color: #8066d1 !important;
+}
+
+.banner-yellow {
+    background-color: #d1bf66 !important;
 }
 
 .bg-green-uber {

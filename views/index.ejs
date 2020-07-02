@@ -10,7 +10,7 @@
     "><%= message %></div>
 <% } %>
 
-<div class="w-full banner-height banner-green relative">
+<div id="banner" class="w-full banner-height relative" style="background-color: #66D19E">
     <img src="/images/banner-left.svg" alt="meal-one" class="sm:block hidden absolute h-full left-0">
     <img src="/images/banner-right.svg" alt="meal-two" class="absolute h-full right-0">
     <div class="absolute centered w-full lg:w-auto lg:pl-0 lg:pr-0 pl-4 pr-4">
@@ -119,5 +119,6 @@
 </div>
 
 <script src="/javascripts/search-bar.min.js"></script>
+<script src="/javascripts/random-banner.min.js"></script>
 
 <%- include('templates/footer') %>
