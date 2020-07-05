@@ -8,6 +8,14 @@ self.addEventListener('install', function (event) {
       .then((cache) => {
         return cache.addAll([
           '/',
+          '/restaurants/IJLSWXjvdbsUujFsvnqs',
+          '/restaurants/JBAmvRjzM7SpGTyNiQJA',
+          '/restaurants/Oj0T2eStXvJMQnWUDwIg',
+          '/restaurants/c50Na4WEvDiW6wWROJRQ',
+          '/restaurants/oxMlf5MRlsv6ib91Vg1H',
+          '/commandes',
+          '/favoris',
+          '/parametres',
           '/stylesheets/tailwind.min.css',
           '/javascripts/firebaseInit.min.js',
           '/javascripts/network.min.js',

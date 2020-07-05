@@ -1,11 +1,24 @@
 # Open Eats
+> Toute ressemblance avec des sites existants ou ayant existé est purement fortuite.
 ![Tests](https://github.com/tomdelie/open-eats/workflows/Tests/badge.svg)
 ### Installation
 
-Install the dependencies and devDependencies and start the server.
+Installer les dépendences et lancher le serveur.
 
 ```sh
 $ npm install
 $ npm start
 $ npm run webpack:dev
+```
+
+### Tests
+
+Lancer les tests unitaires
+```sh
+$ npm test
+```
+
+Lancer les tests Cypress
+```sh
+$ npm run cy:open
 ```
