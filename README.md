@@ -1,5 +1,6 @@
 # Open Eats
 > Toute ressemblance avec des sites existants ou ayant existé est purement fortuite.
+
 ![Tests](https://github.com/tomdelie/open-eats/workflows/Tests/badge.svg)
 ### Installation
 
