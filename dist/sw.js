@@ -1,3 +1,4 @@
+/*
 const cacheVersion = 'v1';
 
 const excludeFromCache = ['https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'];
@@ -63,25 +64,4 @@ self.addEventListener('fetch', function (event) {
     )
   }
 });
-
-self.addEventListener('push', e => {
-  const data = e.data.json();
-
-  self.registration.showNotification(data.title, {
-    body: data.body,
-    actions: [
-      { action: 'like', title: 'Like' },
-      { action: 'reply', title: 'Reply' }
-    ]
-  });
-});
-
-self.addEventListener('notificationclick', event => {
-  let notification = event.notification
-  let action = event.action
-  if (action === 'close') {
-    notification.close()
-  } else {
-    clients.openWindow('https://google.fr')
-  }
-});
+*/
