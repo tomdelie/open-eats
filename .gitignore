@@ -4,3 +4,5 @@ dist/stylesheets
 .vscode
 rest.http
 .nyc_output
+.firebase
+functions/adminsdk_key.json
