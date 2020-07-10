@@ -8,15 +8,14 @@ messaging.usePublicVapidKey('BEWSsrNbhX997f-XZGc0VAfgJavgP-pT0LCKb75Y3PT3a6FNmMa
 const initFirebaseMessaging = () => {
   messaging.requestPermission()
   .then(() => {
-    console.log('Notif permission');
+    setPermission('granted');
     return messaging.getToken();
   })
   .then((token) => {
     localStorage.setItem('token', token);
-    console.log(`Token : ${token}`);
   })
   .catch((err) => {
-    console.log(err)
+    setPermission('denied');
   });
 };
 
@@ -24,11 +23,8 @@ messaging.onTokenRefresh(() => {
   messaging.getToken()
   .then((newToken) => {
     localStorage.setItem('token', newToken);
-    console.log(`New token : ${newToken}`);
   });
 });
-
-initFirebaseMessaging();
 
 const updatePermissionIcon = () => {
   const status = localStorage.getItem('notifications');
@@ -54,13 +50,12 @@ const setPermission = (status) => {
 };
 
 const requestPermission = (event) => {
-  setPermission(event.target.dataset.status);
-
-  if (Notification.permission === 'default') {
-    Notification.requestPermission(status => {
-      setPermission(status);
-    });
+  
+  if (!localStorage.getItem('notifications')) {
+    initFirebaseMessaging();
   }
+
+  setPermission(event.target.dataset.status);
 };
 
 const areNotificationsAllowed = () => {
