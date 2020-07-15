@@ -48,7 +48,7 @@ self.addEventListener('fetch', function (event) {
               caches.open(cacheVersion)
                 .then(function (cache) {
                   cache.put(event.request, responseClone);
-                  cache.matchAll('/images/').then(function (response) {
+                  cache.matchAll('/images').then(function (response) {
                     response.forEach(function (element, index, array) {
                       cache.delete(element);
                     });

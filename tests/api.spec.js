@@ -21,7 +21,7 @@ describe('API', () => {
   });
 
   it('GET /restaurants/:id', (done) => {
-    const expectedRestaurant = { "tags": "Sushi • Japanese", "bannerImage": "/images/sushiko-maxres.jpeg", "name": "Sushiko", "address": "64 Rue Mouffetard, 75005 Paris, France, Île-de-France 75005", "deliveryTime": 15, "deliveryFee": 4.45 };
+    const expectedRestaurant = { "tags": "Sushi • Japanese", "bannerImage": "/images/sushiko-maxres.webp", "name": "Sushiko", "address": "64 Rue Mouffetard, 75005 Paris, France, Île-de-France 75005", "deliveryTime": 15, "deliveryFee": 4.45 };
     chai.request(app)
       .get(`/api/restaurants/${restaurantId}`)
       .end((err, res) => {
@@ -44,7 +44,7 @@ describe('API', () => {
   });
 
   it('GET /restaurants/:restaurantId/products/:productId', (done) => {
-    const expectedProduct = { "description": "Salade de choux et carotte", "title": "Salade de choux", "price": 2.99, "image": "/images/choux.jpeg"};
+    const expectedProduct = { "description": "Salade de choux et carotte", "title": "Salade de choux", "price": 2.99, "image": "/images/choux.webp"};
     chai.request(app)
       .get(`/api/restaurants/${restaurantId}/products/${productId}`)
       .end((err, res) => {
